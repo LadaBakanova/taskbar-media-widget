@@ -1,0 +1,1977 @@
+{
+  "version": "2.21",
+  "children": [
+    {
+      "type": "frame",
+      "id": "bi8Au",
+      "x": 0,
+      "y": 0,
+      "name": "Frame",
+      "clip": true,
+      "width": 800,
+      "height": 600,
+      "fill": "#FFFFFF",
+      "layout": "none"
+    },
+    {
+      "type": "frame",
+      "id": "uhS6o",
+      "x": 0,
+      "y": 700,
+      "name": "Track Row",
+      "reusable": true,
+      "width": 256,
+      "cornerRadius": "$radius-lg",
+      "gap": 10,
+      "padding": [
+        4,
+        8,
+        4,
+        4
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "GU1DP",
+          "name": "Cover",
+          "clip": true,
+          "width": 32,
+          "height": 32,
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "design%20modal-assets/generated-3.png",
+            "mode": "cover"
+          },
+          "cornerRadius": "$radius-sm",
+          "children": [
+            {
+              "type": "frame",
+              "id": "Pg3fn",
+              "x": 0,
+              "y": 0,
+              "name": "State Overlay",
+              "enabled": false,
+              "width": 32,
+              "height": 32,
+              "fill": "#00000080",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "uUblz",
+                  "name": "Equalizer",
+                  "height": 12,
+                  "gap": 2,
+                  "alignItems": "end",
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 1,
+                      "id": "XEEnc",
+                      "name": "Bar 1",
+                      "fill": "$text-primary",
+                      "width": 2,
+                      "height": 6
+                    },
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 1,
+                      "id": "k8v0B",
+                      "name": "Bar 2",
+                      "fill": "$text-primary",
+                      "width": 2,
+                      "height": 12
+                    },
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 1,
+                      "id": "fub43",
+                      "name": "Bar 3",
+                      "fill": "$text-primary",
+                      "width": 2,
+                      "height": 8
+                    },
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 1,
+                      "id": "bjSQ3",
+                      "name": "Bar 4",
+                      "fill": "$text-primary",
+                      "width": 2,
+                      "height": 10
+                    }
+                  ]
+                },
+                {
+                  "type": "icon",
+                  "id": "g7mLi",
+                  "x": 0,
+                  "y": 0,
+                  "name": "Pause Icon",
+                  "enabled": false,
+                  "width": 20,
+                  "height": 20,
+                  "icon": "pause",
+                  "library": "Material Symbols Rounded",
+                  "fill": "$text-primary"
+                },
+                {
+                  "type": "icon",
+                  "id": "t1QYp",
+                  "x": 0,
+                  "y": 0,
+                  "name": "Play Icon",
+                  "enabled": false,
+                  "width": 20,
+                  "height": 20,
+                  "icon": "play_arrow",
+                  "library": "Material Symbols Rounded",
+                  "fill": "$text-primary"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "o3UytH",
+          "name": "Info",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 1,
+          "children": [
+            {
+              "type": "text",
+              "id": "MztjJ",
+              "name": "Title",
+              "fill": "$text-primary",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Спектакль окончен",
+              "fontFamily": "$font",
+              "fontSize": 13,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "WDTvk",
+              "name": "Artist",
+              "fill": "$text-secondary",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Полина Гагарина",
+              "fontFamily": "$font",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "WdKUV",
+          "name": "Duration",
+          "fill": "$text-secondary",
+          "content": "4:00",
+          "fontFamily": "$font",
+          "fontSize": 13,
+          "fontWeight": "normal"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "nFNy1",
+      "x": 320,
+      "y": 700,
+      "name": "Now Playing Panel",
+      "reusable": true,
+      "clip": true,
+      "width": 180,
+      "height": 288,
+      "fill": "$bg-panel",
+      "cornerRadius": "$radius-lg",
+      "layout": "vertical",
+      "padding": [
+        8,
+        8,
+        10,
+        8
+      ],
+      "justifyContent": "space_between",
+      "children": [
+        {
+          "type": "rectangle",
+          "id": "leqGj",
+          "layoutPosition": "absolute",
+          "x": -60,
+          "y": -40,
+          "name": "Ambient Cover",
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "design%20modal-assets/generated-3.png",
+            "mode": "cover"
+          },
+          "width": 300,
+          "height": 368,
+          "effect": {
+            "type": "blur",
+            "radius": 32
+          }
+        },
+        {
+          "type": "rectangle",
+          "id": "ikxn6",
+          "layoutPosition": "absolute",
+          "x": 0,
+          "y": 0,
+          "name": "Ambient Shade",
+          "fill": {
+            "type": "gradient",
+            "gradientType": "linear",
+            "enabled": true,
+            "rotation": 180,
+            "size": {
+              "height": 1
+            },
+            "colors": [
+              {
+                "color": "#1F1F1F59",
+                "position": 0
+              },
+              {
+                "color": "#1F1F1FB3",
+                "position": 0.55
+              },
+              {
+                "color": "#1F1F1FE6",
+                "position": 1
+              }
+            ]
+          },
+          "width": 180,
+          "height": 288
+        },
+        {
+          "type": "frame",
+          "id": "zi6Sx",
+          "name": "Track",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 12,
+          "children": [
+            {
+              "type": "frame",
+              "id": "fSy1T",
+              "name": "Cover",
+              "width": "fill_container",
+              "height": 164,
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "design%20modal-assets/generated-3.png",
+                "mode": "cover"
+              },
+              "cornerRadius": "$radius-lg",
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "#00000059",
+                "offset": {
+                  "x": 0,
+                  "y": 8
+                },
+                "blur": 24
+              }
+            },
+            {
+              "type": "frame",
+              "id": "rn3h4",
+              "name": "Meta",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 2,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "V7YSkC",
+                  "name": "Title",
+                  "fill": "$text-primary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Спектакль окончен",
+                  "fontFamily": "$font",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "k1c8Uv",
+                  "name": "Artist",
+                  "fill": "$text-on-cover",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Полина Гагарина",
+                  "fontFamily": "$font",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "OUEYp",
+          "name": "Progress",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 6,
+          "children": [
+            {
+              "type": "frame",
+              "id": "UHxE6",
+              "name": "Progress Track",
+              "width": "fill_container",
+              "height": 4,
+              "fill": "$progress-track",
+              "cornerRadius": 2,
+              "children": [
+                {
+                  "type": "rectangle",
+                  "cornerRadius": 2,
+                  "id": "k2jNY",
+                  "name": "Progress Fill",
+                  "fill": "$text-primary",
+                  "width": 51,
+                  "height": 4
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "I6RtH3",
+              "name": "Time",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "a9XIDe",
+                  "name": "Elapsed",
+                  "fill": "$text-primary",
+                  "content": "1:15",
+                  "fontFamily": "$font",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "FQbwh",
+                  "name": "Total",
+                  "fill": "$text-on-cover",
+                  "content": "4:00",
+                  "fontFamily": "$font",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "g0d8E",
+      "x": 0,
+      "y": 1100,
+      "name": "Моя волна · играет",
+      "clip": true,
+      "width": 460,
+      "height": 300,
+      "fill": "$bg-window",
+      "cornerRadius": "$radius-lg",
+      "gap": 12,
+      "padding": 6,
+      "children": [
+        {
+          "id": "cOlkG",
+          "type": "ref",
+          "ref": "nFNy1",
+          "name": "Now Playing Panel",
+          "height": "fill_container",
+          "descendants": {
+            "leqGj": {
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "design%20modal-assets/generated-3.png",
+                "mode": "cover"
+              }
+            },
+            "fSy1T": {
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "design%20modal-assets/generated-3.png",
+                "mode": "cover"
+              }
+            }
+          }
+        },
+        {
+          "type": "frame",
+          "id": "oDGOT",
+          "name": "Queue",
+          "clip": true,
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "children": [
+            {
+              "type": "frame",
+              "id": "FN4JS",
+              "name": "Source Header",
+              "width": "fill_container",
+              "padding": [
+                10,
+                6,
+                8,
+                6
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "TXP81",
+                  "name": "Source Header Label",
+                  "fill": "$text-secondary",
+                  "content": "Моя волна",
+                  "fontFamily": "$font",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "mUQ5k",
+              "name": "History & Current",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 2,
+              "children": [
+                {
+                  "id": "GjTxb",
+                  "type": "ref",
+                  "ref": "uhS6o",
+                  "name": "Track · Группа крови (past)",
+                  "width": "fill_container",
+                  "opacity": 0.5,
+                  "descendants": {
+                    "GU1DP": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "design%20modal-assets/generated-1.png",
+                        "mode": "cover"
+                      }
+                    },
+                    "MztjJ": {
+                      "content": "Группа крови"
+                    },
+                    "WDTvk": {
+                      "content": "Кино"
+                    },
+                    "WdKUV": {
+                      "content": "4:45"
+                    }
+                  }
+                },
+                {
+                  "id": "m3iT0O",
+                  "type": "ref",
+                  "ref": "uhS6o",
+                  "name": "Track · Выхода нет (past)",
+                  "width": "fill_container",
+                  "opacity": 0.5,
+                  "descendants": {
+                    "GU1DP": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "design%20modal-assets/generated-4.png",
+                        "mode": "cover"
+                      }
+                    },
+                    "MztjJ": {
+                      "content": "Выхода нет"
+                    },
+                    "WDTvk": {
+                      "content": "Сплин"
+                    },
+                    "WdKUV": {
+                      "content": "3:47"
+                    }
+                  }
+                },
+                {
+                  "id": "dya4h",
+                  "type": "ref",
+                  "ref": "uhS6o",
+                  "name": "Track · Знаешь ли ты (past)",
+                  "width": "fill_container",
+                  "opacity": 0.5,
+                  "descendants": {
+                    "GU1DP": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "design%20modal-assets/generated-7.png",
+                        "mode": "cover"
+                      }
+                    },
+                    "MztjJ": {
+                      "content": "Знаешь ли ты"
+                    },
+                    "WDTvk": {
+                      "content": "МакSим"
+                    },
+                    "WdKUV": {
+                      "content": "3:53"
+                    }
+                  }
+                },
+                {
+                  "id": "NMqF7",
+                  "type": "ref",
+                  "ref": "uhS6o",
+                  "name": "Track · Спектакль окончен (playing)",
+                  "width": "fill_container",
+                  "fill": "$row-active",
+                  "descendants": {
+                    "GU1DP": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "design%20modal-assets/generated-3.png",
+                        "mode": "cover"
+                      }
+                    },
+                    "Pg3fn": {
+                      "enabled": true
+                    },
+                    "MztjJ": {
+                      "content": "Спектакль окончен"
+                    },
+                    "WDTvk": {
+                      "content": "Полина Гагарина"
+                    },
+                    "WdKUV": {
+                      "content": "4:00"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "C4MLL",
+              "name": "Up Next Header",
+              "width": "fill_container",
+              "padding": [
+                10,
+                6,
+                8,
+                6
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "UQ445",
+                  "name": "Up Next Header Label",
+                  "fill": "$text-secondary",
+                  "content": "Далее в очереди",
+                  "fontFamily": "$font",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "bJRTl",
+              "name": "Up Next",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 2,
+              "children": [
+                {
+                  "id": "pxfWE",
+                  "type": "ref",
+                  "ref": "uhS6o",
+                  "name": "Track · Прованс",
+                  "width": "fill_container",
+                  "descendants": {
+                    "GU1DP": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "design%20modal-assets/generated-5.png",
+                        "mode": "cover"
+                      }
+                    },
+                    "MztjJ": {
+                      "content": "Прованс"
+                    },
+                    "WDTvk": {
+                      "content": "Ёлка"
+                    },
+                    "WdKUV": {
+                      "content": "3:36"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "Ami0X",
+      "x": 520,
+      "y": 1100,
+      "name": "Моя волна · первый трек",
+      "clip": true,
+      "width": 460,
+      "height": 300,
+      "fill": "$bg-window",
+      "cornerRadius": "$radius-lg",
+      "gap": 12,
+      "padding": 6,
+      "children": [
+        {
+          "id": "p5avR",
+          "type": "ref",
+          "ref": "nFNy1",
+          "name": "Now Playing Panel",
+          "height": "fill_container",
+          "descendants": {
+            "leqGj": {
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "design%20modal-assets/generated-3.png",
+                "mode": "cover"
+              }
+            },
+            "fSy1T": {
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "design%20modal-assets/generated-3.png",
+                "mode": "cover"
+              }
+            },
+            "k2jNY": {
+              "width": 6
+            },
+            "a9XIDe": {
+              "content": "0:08"
+            }
+          }
+        },
+        {
+          "type": "frame",
+          "id": "YyuLl",
+          "name": "Queue",
+          "clip": true,
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "children": [
+            {
+              "type": "frame",
+              "id": "fiaqu",
+              "name": "Source Header",
+              "width": "fill_container",
+              "padding": [
+                10,
+                6,
+                8,
+                6
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "zxt5g",
+                  "name": "Source Header Label",
+                  "fill": "$text-secondary",
+                  "content": "Моя волна",
+                  "fontFamily": "$font",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "sChpg",
+              "name": "History & Current",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 2,
+              "children": [
+                {
+                  "id": "e9qwEC",
+                  "type": "ref",
+                  "ref": "uhS6o",
+                  "name": "Track · Спектакль окончен (playing)",
+                  "width": "fill_container",
+                  "fill": "$row-active",
+                  "descendants": {
+                    "GU1DP": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "design%20modal-assets/generated-3.png",
+                        "mode": "cover"
+                      }
+                    },
+                    "Pg3fn": {
+                      "enabled": true
+                    },
+                    "MztjJ": {
+                      "content": "Спектакль окончен"
+                    },
+                    "WDTvk": {
+                      "content": "Полина Гагарина"
+                    },
+                    "WdKUV": {
+                      "content": "4:00"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Mzy3b",
+              "name": "Up Next Header",
+              "width": "fill_container",
+              "padding": [
+                10,
+                6,
+                8,
+                6
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Btab7",
+                  "name": "Up Next Header Label",
+                  "fill": "$text-secondary",
+                  "content": "Далее в очереди",
+                  "fontFamily": "$font",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "aFOD5",
+              "name": "Up Next",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 2,
+              "children": [
+                {
+                  "id": "MgPSX",
+                  "type": "ref",
+                  "ref": "uhS6o",
+                  "name": "Track · Прованс",
+                  "width": "fill_container",
+                  "descendants": {
+                    "GU1DP": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "design%20modal-assets/generated-5.png",
+                        "mode": "cover"
+                      }
+                    },
+                    "MztjJ": {
+                      "content": "Прованс"
+                    },
+                    "WDTvk": {
+                      "content": "Ёлка"
+                    },
+                    "WdKUV": {
+                      "content": "3:36"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "T2IbC",
+      "x": 1040,
+      "y": 1100,
+      "name": "Плейлист · играет",
+      "clip": true,
+      "width": 460,
+      "height": 300,
+      "fill": "$bg-window",
+      "cornerRadius": "$radius-lg",
+      "gap": 12,
+      "padding": 6,
+      "children": [
+        {
+          "id": "DPtKN",
+          "type": "ref",
+          "ref": "nFNy1",
+          "name": "Now Playing Panel",
+          "height": "fill_container",
+          "descendants": {
+            "leqGj": {
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "design%20modal-assets/generated-3.png",
+                "mode": "cover"
+              }
+            },
+            "fSy1T": {
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "design%20modal-assets/generated-3.png",
+                "mode": "cover"
+              }
+            }
+          }
+        },
+        {
+          "type": "frame",
+          "id": "gSRnE",
+          "name": "Queue",
+          "clip": true,
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "children": [
+            {
+              "type": "frame",
+              "id": "S18tQ",
+              "name": "Source Header",
+              "width": "fill_container",
+              "padding": [
+                10,
+                6,
+                8,
+                6
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "hR1mM",
+                  "name": "Source Header Label",
+                  "fill": "$text-secondary",
+                  "content": "Русские хиты",
+                  "fontFamily": "$font",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "lPhWm",
+              "name": "History & Current",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 2,
+              "children": [
+                {
+                  "id": "uKepZ",
+                  "type": "ref",
+                  "ref": "uhS6o",
+                  "name": "Track · Выхода нет (past)",
+                  "width": "fill_container",
+                  "opacity": 0.5,
+                  "descendants": {
+                    "GU1DP": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "design%20modal-assets/generated-4.png",
+                        "mode": "cover"
+                      }
+                    },
+                    "MztjJ": {
+                      "content": "Выхода нет"
+                    },
+                    "WDTvk": {
+                      "content": "Сплин"
+                    },
+                    "WdKUV": {
+                      "content": "3:47"
+                    }
+                  }
+                },
+                {
+                  "id": "UAq4O",
+                  "type": "ref",
+                  "ref": "uhS6o",
+                  "name": "Track · Спектакль окончен (playing)",
+                  "width": "fill_container",
+                  "fill": "$row-active",
+                  "descendants": {
+                    "GU1DP": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "design%20modal-assets/generated-3.png",
+                        "mode": "cover"
+                      }
+                    },
+                    "Pg3fn": {
+                      "enabled": true
+                    },
+                    "MztjJ": {
+                      "content": "Спектакль окончен"
+                    },
+                    "WDTvk": {
+                      "content": "Полина Гагарина"
+                    },
+                    "WdKUV": {
+                      "content": "4:00"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "KXPlZ",
+              "name": "Up Next Header",
+              "width": "fill_container",
+              "padding": [
+                10,
+                6,
+                8,
+                6
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "UDxdL",
+                  "name": "Up Next Header Label",
+                  "fill": "$text-secondary",
+                  "content": "Далее в очереди",
+                  "fontFamily": "$font",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "zrWBY",
+              "name": "Up Next",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 2,
+              "children": [
+                {
+                  "id": "FdAhN",
+                  "type": "ref",
+                  "ref": "uhS6o",
+                  "name": "Track · Прованс",
+                  "width": "fill_container",
+                  "descendants": {
+                    "GU1DP": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "design%20modal-assets/generated-5.png",
+                        "mode": "cover"
+                      }
+                    },
+                    "MztjJ": {
+                      "content": "Прованс"
+                    },
+                    "WDTvk": {
+                      "content": "Ёлка"
+                    },
+                    "WdKUV": {
+                      "content": "3:36"
+                    }
+                  }
+                },
+                {
+                  "id": "iFEKk",
+                  "type": "ref",
+                  "ref": "uhS6o",
+                  "name": "Track · Небо Лондона",
+                  "width": "fill_container",
+                  "descendants": {
+                    "GU1DP": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "design%20modal-assets/generated-2.png",
+                        "mode": "cover"
+                      }
+                    },
+                    "MztjJ": {
+                      "content": "Небо Лондона"
+                    },
+                    "WDTvk": {
+                      "content": "Земфира"
+                    },
+                    "WdKUV": {
+                      "content": "3:55"
+                    }
+                  }
+                },
+                {
+                  "id": "mxeR7",
+                  "type": "ref",
+                  "ref": "uhS6o",
+                  "name": "Track · Позови меня с собой",
+                  "width": "fill_container",
+                  "descendants": {
+                    "GU1DP": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "design%20modal-assets/generated-6.png",
+                        "mode": "cover"
+                      }
+                    },
+                    "MztjJ": {
+                      "content": "Позови меня с собой"
+                    },
+                    "WDTvk": {
+                      "content": "Алла Пугачёва"
+                    },
+                    "WdKUV": {
+                      "content": "4:20"
+                    }
+                  }
+                },
+                {
+                  "id": "DioFG",
+                  "type": "ref",
+                  "ref": "uhS6o",
+                  "name": "Track · Это здорово",
+                  "width": "fill_container",
+                  "descendants": {
+                    "GU1DP": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "design%20modal-assets/generated.png",
+                        "mode": "cover"
+                      }
+                    },
+                    "MztjJ": {
+                      "content": "Это здорово"
+                    },
+                    "WDTvk": {
+                      "content": "Николай Носков"
+                    },
+                    "WdKUV": {
+                      "content": "4:42"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "rectangle",
+              "id": "gJaaU",
+              "layoutPosition": "absolute",
+              "x": 0,
+              "y": 248,
+              "name": "Bottom Fade",
+              "fill": {
+                "type": "gradient",
+                "gradientType": "linear",
+                "enabled": true,
+                "rotation": 180,
+                "size": {
+                  "height": 1
+                },
+                "colors": [
+                  {
+                    "color": "#1F1F1F00",
+                    "position": 0
+                  },
+                  {
+                    "color": "#1F1F1F",
+                    "position": 1
+                  }
+                ]
+              },
+              "width": 256,
+              "height": 40
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "A5aTM5",
+      "x": 1560,
+      "y": 1100,
+      "name": "Моя волна · пауза",
+      "clip": true,
+      "width": 460,
+      "height": 300,
+      "fill": "$bg-window",
+      "cornerRadius": "$radius-lg",
+      "gap": 12,
+      "padding": 6,
+      "children": [
+        {
+          "id": "l9uoE",
+          "type": "ref",
+          "ref": "nFNy1",
+          "name": "Now Playing Panel",
+          "height": "fill_container",
+          "descendants": {
+            "leqGj": {
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "design%20modal-assets/generated-3.png",
+                "mode": "cover"
+              }
+            },
+            "fSy1T": {
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "design%20modal-assets/generated-3.png",
+                "mode": "cover"
+              }
+            }
+          }
+        },
+        {
+          "type": "frame",
+          "id": "AzzVh",
+          "name": "Queue",
+          "clip": true,
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "children": [
+            {
+              "type": "frame",
+              "id": "Gw2Yh",
+              "name": "Source Header",
+              "width": "fill_container",
+              "padding": [
+                10,
+                6,
+                8,
+                6
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "ELtFQ",
+                  "name": "Source Header Label",
+                  "fill": "$text-secondary",
+                  "content": "Моя волна",
+                  "fontFamily": "$font",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "bJx7j",
+              "name": "History & Current",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 2,
+              "children": [
+                {
+                  "id": "S2KE2",
+                  "type": "ref",
+                  "ref": "uhS6o",
+                  "name": "Track · Группа крови (past)",
+                  "width": "fill_container",
+                  "opacity": 0.5,
+                  "descendants": {
+                    "GU1DP": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "design%20modal-assets/generated-1.png",
+                        "mode": "cover"
+                      }
+                    },
+                    "MztjJ": {
+                      "content": "Группа крови"
+                    },
+                    "WDTvk": {
+                      "content": "Кино"
+                    },
+                    "WdKUV": {
+                      "content": "4:45"
+                    }
+                  }
+                },
+                {
+                  "id": "k8v1Hu",
+                  "type": "ref",
+                  "ref": "uhS6o",
+                  "name": "Track · Выхода нет (past)",
+                  "width": "fill_container",
+                  "opacity": 0.5,
+                  "descendants": {
+                    "GU1DP": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "design%20modal-assets/generated-4.png",
+                        "mode": "cover"
+                      }
+                    },
+                    "MztjJ": {
+                      "content": "Выхода нет"
+                    },
+                    "WDTvk": {
+                      "content": "Сплин"
+                    },
+                    "WdKUV": {
+                      "content": "3:47"
+                    }
+                  }
+                },
+                {
+                  "id": "rswJ4",
+                  "type": "ref",
+                  "ref": "uhS6o",
+                  "name": "Track · Знаешь ли ты (past)",
+                  "width": "fill_container",
+                  "opacity": 0.5,
+                  "descendants": {
+                    "GU1DP": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "design%20modal-assets/generated-7.png",
+                        "mode": "cover"
+                      }
+                    },
+                    "MztjJ": {
+                      "content": "Знаешь ли ты"
+                    },
+                    "WDTvk": {
+                      "content": "МакSим"
+                    },
+                    "WdKUV": {
+                      "content": "3:53"
+                    }
+                  }
+                },
+                {
+                  "id": "QZrYx",
+                  "type": "ref",
+                  "ref": "uhS6o",
+                  "name": "Track · Спектакль окончен (paused)",
+                  "width": "fill_container",
+                  "fill": "$row-active",
+                  "descendants": {
+                    "GU1DP": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "design%20modal-assets/generated-3.png",
+                        "mode": "cover"
+                      }
+                    },
+                    "Pg3fn": {
+                      "enabled": true
+                    },
+                    "uUblz": {
+                      "enabled": false
+                    },
+                    "g7mLi": {
+                      "enabled": true
+                    },
+                    "MztjJ": {
+                      "content": "Спектакль окончен"
+                    },
+                    "WDTvk": {
+                      "content": "Полина Гагарина"
+                    },
+                    "WdKUV": {
+                      "content": "4:00"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "e2X8cP",
+              "name": "Up Next Header",
+              "width": "fill_container",
+              "padding": [
+                10,
+                6,
+                8,
+                6
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "u5iadq",
+                  "name": "Up Next Header Label",
+                  "fill": "$text-secondary",
+                  "content": "Далее в очереди",
+                  "fontFamily": "$font",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "PhE13",
+              "name": "Up Next",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 2,
+              "children": [
+                {
+                  "id": "Io5kr",
+                  "type": "ref",
+                  "ref": "uhS6o",
+                  "name": "Track · Прованс",
+                  "width": "fill_container",
+                  "descendants": {
+                    "GU1DP": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "design%20modal-assets/generated-5.png",
+                        "mode": "cover"
+                      }
+                    },
+                    "MztjJ": {
+                      "content": "Прованс"
+                    },
+                    "WDTvk": {
+                      "content": "Ёлка"
+                    },
+                    "WdKUV": {
+                      "content": "3:36"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "RYyHo",
+      "x": 2080,
+      "y": 1100,
+      "name": "Плейлист · наведение на трек",
+      "clip": true,
+      "width": 460,
+      "height": 300,
+      "fill": "$bg-window",
+      "cornerRadius": "$radius-lg",
+      "gap": 12,
+      "padding": 6,
+      "children": [
+        {
+          "id": "C89hMN",
+          "type": "ref",
+          "ref": "nFNy1",
+          "name": "Now Playing Panel",
+          "height": "fill_container",
+          "descendants": {
+            "leqGj": {
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "design%20modal-assets/generated-3.png",
+                "mode": "cover"
+              }
+            },
+            "fSy1T": {
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "design%20modal-assets/generated-3.png",
+                "mode": "cover"
+              }
+            }
+          }
+        },
+        {
+          "type": "frame",
+          "id": "vnH2N",
+          "name": "Queue",
+          "clip": true,
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "children": [
+            {
+              "type": "frame",
+              "id": "D6DwW",
+              "name": "Source Header",
+              "width": "fill_container",
+              "padding": [
+                10,
+                6,
+                8,
+                6
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Jy1Qg",
+                  "name": "Source Header Label",
+                  "fill": "$text-secondary",
+                  "content": "Русские хиты",
+                  "fontFamily": "$font",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "YvxsD",
+              "name": "History & Current",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 2,
+              "children": [
+                {
+                  "id": "MDJzq",
+                  "type": "ref",
+                  "ref": "uhS6o",
+                  "name": "Track · Выхода нет (past)",
+                  "width": "fill_container",
+                  "opacity": 0.5,
+                  "descendants": {
+                    "GU1DP": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "design%20modal-assets/generated-4.png",
+                        "mode": "cover"
+                      }
+                    },
+                    "MztjJ": {
+                      "content": "Выхода нет"
+                    },
+                    "WDTvk": {
+                      "content": "Сплин"
+                    },
+                    "WdKUV": {
+                      "content": "3:47"
+                    }
+                  }
+                },
+                {
+                  "id": "E6BX5z",
+                  "type": "ref",
+                  "ref": "uhS6o",
+                  "name": "Track · Спектакль окончен (playing)",
+                  "width": "fill_container",
+                  "fill": "$row-active",
+                  "descendants": {
+                    "GU1DP": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "design%20modal-assets/generated-3.png",
+                        "mode": "cover"
+                      }
+                    },
+                    "Pg3fn": {
+                      "enabled": true
+                    },
+                    "MztjJ": {
+                      "content": "Спектакль окончен"
+                    },
+                    "WDTvk": {
+                      "content": "Полина Гагарина"
+                    },
+                    "WdKUV": {
+                      "content": "4:00"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "qoJhd",
+              "name": "Up Next Header",
+              "width": "fill_container",
+              "padding": [
+                10,
+                6,
+                8,
+                6
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "uc6bO",
+                  "name": "Up Next Header Label",
+                  "fill": "$text-secondary",
+                  "content": "Далее в очереди",
+                  "fontFamily": "$font",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "NwxDT",
+              "name": "Up Next",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 2,
+              "children": [
+                {
+                  "id": "aciCC",
+                  "type": "ref",
+                  "ref": "uhS6o",
+                  "name": "Track · Прованс",
+                  "width": "fill_container",
+                  "descendants": {
+                    "GU1DP": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "design%20modal-assets/generated-5.png",
+                        "mode": "cover"
+                      }
+                    },
+                    "MztjJ": {
+                      "content": "Прованс"
+                    },
+                    "WDTvk": {
+                      "content": "Ёлка"
+                    },
+                    "WdKUV": {
+                      "content": "3:36"
+                    }
+                  }
+                },
+                {
+                  "id": "L0uMkJ",
+                  "type": "ref",
+                  "ref": "uhS6o",
+                  "name": "Track · Небо Лондона (hover)",
+                  "width": "fill_container",
+                  "fill": "$row-hover",
+                  "descendants": {
+                    "GU1DP": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "design%20modal-assets/generated-2.png",
+                        "mode": "cover"
+                      }
+                    },
+                    "Pg3fn": {
+                      "enabled": true
+                    },
+                    "uUblz": {
+                      "enabled": false
+                    },
+                    "t1QYp": {
+                      "enabled": true
+                    },
+                    "MztjJ": {
+                      "content": "Небо Лондона"
+                    },
+                    "WDTvk": {
+                      "content": "Земфира"
+                    },
+                    "WdKUV": {
+                      "content": "3:55"
+                    }
+                  }
+                },
+                {
+                  "id": "wtnJK",
+                  "type": "ref",
+                  "ref": "uhS6o",
+                  "name": "Track · Позови меня с собой",
+                  "width": "fill_container",
+                  "descendants": {
+                    "GU1DP": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "design%20modal-assets/generated-6.png",
+                        "mode": "cover"
+                      }
+                    },
+                    "MztjJ": {
+                      "content": "Позови меня с собой"
+                    },
+                    "WDTvk": {
+                      "content": "Алла Пугачёва"
+                    },
+                    "WdKUV": {
+                      "content": "4:20"
+                    }
+                  }
+                },
+                {
+                  "id": "h946e",
+                  "type": "ref",
+                  "ref": "uhS6o",
+                  "name": "Track · Это здорово",
+                  "width": "fill_container",
+                  "descendants": {
+                    "GU1DP": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "design%20modal-assets/generated.png",
+                        "mode": "cover"
+                      }
+                    },
+                    "MztjJ": {
+                      "content": "Это здорово"
+                    },
+                    "WDTvk": {
+                      "content": "Николай Носков"
+                    },
+                    "WdKUV": {
+                      "content": "4:42"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "rectangle",
+              "id": "p79MWU",
+              "layoutPosition": "absolute",
+              "x": 0,
+              "y": 248,
+              "name": "Bottom Fade",
+              "fill": {
+                "type": "gradient",
+                "gradientType": "linear",
+                "enabled": true,
+                "rotation": 180,
+                "size": {
+                  "height": 1
+                },
+                "colors": [
+                  {
+                    "color": "#1F1F1F00",
+                    "position": 0
+                  },
+                  {
+                    "color": "#1F1F1F",
+                    "position": 1
+                  }
+                ]
+              },
+              "width": 256,
+              "height": 40
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "xAmsS",
+      "x": 560,
+      "y": 700,
+      "name": "Track Row · состояния",
+      "fill": "$bg-window",
+      "cornerRadius": "$radius-lg",
+      "layout": "vertical",
+      "gap": 2,
+      "padding": 16,
+      "children": [
+        {
+          "type": "frame",
+          "id": "pwk1C",
+          "name": "Spec · Обычный",
+          "gap": 16,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "yeftV",
+              "name": "Spec Label",
+              "width": 150,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "nHFKM",
+                  "name": "Label · Обычный",
+                  "fill": "$text-secondary",
+                  "content": "Обычный",
+                  "fontFamily": "$font",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "id": "ueAAq",
+              "type": "ref",
+              "ref": "uhS6o",
+              "name": "Row · Обычный"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "UaUm7",
+          "name": "Spec · Прошлый · opacity 50%",
+          "gap": 16,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "kbM3t",
+              "name": "Spec Label",
+              "width": 150,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "O5FboS",
+                  "name": "Label · Прошлый · opacity 50%",
+                  "fill": "$text-secondary",
+                  "content": "Прошлый · opacity 50%",
+                  "fontFamily": "$font",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "id": "ZRn26",
+              "type": "ref",
+              "ref": "uhS6o",
+              "name": "Row · Прошлый · opacity 50%",
+              "opacity": 0.5
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "a1lHg7",
+          "name": "Spec · Наведение",
+          "gap": 16,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "kvTdd",
+              "name": "Spec Label",
+              "width": 150,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "OOy9I",
+                  "name": "Label · Наведение",
+                  "fill": "$text-secondary",
+                  "content": "Наведение",
+                  "fontFamily": "$font",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "id": "vQ9V8",
+              "type": "ref",
+              "ref": "uhS6o",
+              "name": "Row · Наведение",
+              "fill": "$row-hover",
+              "descendants": {
+                "Pg3fn": {
+                  "enabled": true
+                },
+                "uUblz": {
+                  "enabled": false
+                },
+                "t1QYp": {
+                  "enabled": true
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "GlISQ",
+          "name": "Spec · Играет сейчас",
+          "gap": 16,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "wsA5e",
+              "name": "Spec Label",
+              "width": 150,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "UovRY",
+                  "name": "Label · Играет сейчас",
+                  "fill": "$text-secondary",
+                  "content": "Играет сейчас",
+                  "fontFamily": "$font",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "id": "JokUh",
+              "type": "ref",
+              "ref": "uhS6o",
+              "name": "Row · Играет сейчас",
+              "fill": "$row-active",
+              "descendants": {
+                "Pg3fn": {
+                  "enabled": true
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "nUjMA",
+          "name": "Spec · Пауза",
+          "gap": 16,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "lqjCS",
+              "name": "Spec Label",
+              "width": 150,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "sGlui",
+                  "name": "Label · Пауза",
+                  "fill": "$text-secondary",
+                  "content": "Пауза",
+                  "fontFamily": "$font",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "id": "iIIlQ",
+              "type": "ref",
+              "ref": "uhS6o",
+              "name": "Row · Пауза",
+              "fill": "$row-active",
+              "descendants": {
+                "Pg3fn": {
+                  "enabled": true
+                },
+                "uUblz": {
+                  "enabled": false
+                },
+                "g7mLi": {
+                  "enabled": true
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "bg-window": {
+      "type": "color",
+      "value": "#1F1F1F"
+    },
+    "bg-panel": {
+      "type": "color",
+      "value": "#2A2A2C"
+    },
+    "text-primary": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "text-secondary": {
+      "type": "color",
+      "value": "#8F8F8F"
+    },
+    "text-on-cover": {
+      "type": "color",
+      "value": "#FFFFFFA6"
+    },
+    "progress-track": {
+      "type": "color",
+      "value": "#FFFFFF33"
+    },
+    "row-active": {
+      "type": "color",
+      "value": "#FFFFFF14"
+    },
+    "row-hover": {
+      "type": "color",
+      "value": "#FFFFFF0A"
+    },
+    "radius-lg": {
+      "type": "number",
+      "value": 8
+    },
+    "radius-sm": {
+      "type": "number",
+      "value": 6
+    },
+    "font": {
+      "type": "string",
+      "value": "Inter"
+    }
+  },
+  "fileToken": "1062e4c1-7709-45a4-8c35-4a0d3766dc23"
+}

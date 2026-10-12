@@ -1,0 +1,25 @@
+# Build outputs and binaries
+*.dll
+*.exe
+*.pdb
+*.obj
+*.lib
+*.exp
+build/
+build-verify/
+preview/build/
+preview/out*/
+
+# Local backups of source files
+*.bak*
+
+# Logs and probe output
+*-log.txt
+probe-*.txt
+
+# Local tooling state and machine-specific recovery data
+.acl-recovery/
+.pencil-mcp/
+
+# Screenshots and renders from the taskbar (root level only)
+/*.png
