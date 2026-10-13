@@ -23,3 +23,6 @@ probe-*.txt
 
 # Screenshots and renders from the taskbar (root level only)
 /*.png
+
+# Old backups, screenshots and logs moved out of the root; safe to delete
+archive/

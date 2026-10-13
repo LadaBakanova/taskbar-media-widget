@@ -4,7 +4,7 @@
 //
 // Read-only: it never moves, shows or hides any window.
 //
-// Build and run with run-diag.ps1.
+// Build with Windhawk's clang++ (same flags as run-probe.ps1), run widget-diag.exe <out-dir>.
 
 #include <windows.h>
 #include <dwmapi.h>
