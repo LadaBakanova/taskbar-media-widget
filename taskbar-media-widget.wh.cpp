@@ -2,7 +2,7 @@
 // @id              taskbar-media-widget
 // @name            Taskbar media widget
 // @description     Shows what is playing (Yandex Music and any other player) on the taskbar, between the app buttons and the system tray, with a live stereo visualizer, previous / play-pause / next buttons and a live progress bar
-// @version         2.8.9
+// @version         2.8.11
 // @author          you
 // @include         explorer.exe
 // @architecture    x86-64
@@ -550,6 +550,9 @@ struct CommandRequest {
 
 // Wakes the command thread the moment something is queued.
 HANDLE g_pollWakeEvent = nullptr;
+// The state thread (StateThreadProc): its wake-up and its "I have left" signal.
+HANDLE g_stateWakeEvent = nullptr;
+HANDLE g_stateExitedEvent = nullptr;
 
 std::mutex g_commandMutex;
 CommandRequest g_pendingCommand{};
@@ -1492,10 +1495,27 @@ void RefreshState() {
     static GlobalSystemMediaTransportControlsSession subscribedSession{nullptr};
     const unsigned long long now = GetTickCount64();
 
+    // The session manager is requested once and kept. RequestAsync is the slow
+    // call here - it waits for the media service and the player, and measured
+    // at 2-6 s while Yandex Music was busy - and it used to run on every poll on
+    // this thread, which is the thread that moves the bars and answers the mouse.
+    // The manager is live: it already tracks the sessions, and reading it
+    // (GetCurrentSession, the properties) takes milliseconds. Only this thread
+    // touches the cached object, since RefreshState is called from PollTimerProc
+    // alone.
+    static GlobalSystemMediaTransportControlsSessionManager sessionManager{nullptr};
+
+    // RefreshState runs on its own thread (StateThreadProc), while the player's
+    // event handlers write g_state from theirs, so what is carried over from the
+    // previous poll is read once, under the lock.
+    const MediaState prev = GetState();
+
     try {
-        auto manager =
-            GlobalSystemMediaTransportControlsSessionManager::RequestAsync().get();
-        auto session = PickSession(manager);
+        if (!sessionManager) {
+            sessionManager =
+                GlobalSystemMediaTransportControlsSessionManager::RequestAsync().get();
+        }
+        auto session = PickSession(sessionManager);
 
         if (session) {
             gotSession = true;
@@ -1589,9 +1609,8 @@ void RefreshState() {
                     }
                 } else if (artLoaded) {
                     // Same track: carry the art that is already loaded.
-                    std::lock_guard<std::mutex> stateLock(g_stateMutex);
-                    next.artPixels = g_state.artPixels;
-                    next.artSize = g_state.artSize;
+                    next.artPixels = prev.artPixels;
+                    next.artSize = prev.artSize;
                     next.hasArt = true;
                 } else {
                     // Waiting for the next attempt: no image for this track yet.
@@ -1624,7 +1643,7 @@ void RefreshState() {
             // hand the icon back to the polling clock a couple of seconds into
             // every track - which is the delay this code exists to remove.
             if (g_subscribed && g_playbackEventSeen.load()) {
-                next.playing = g_state.playing;
+                next.playing = prev.playing;
             }
 
             auto timeline = session.GetTimelineProperties();
@@ -1685,9 +1704,9 @@ void RefreshState() {
                        publishedPositionMs, next.durationMs, (int)next.playing);
             } else {
                 // Keep counting from the anchor we already hold.
-                next.anchorPositionMs = g_state.anchorPositionMs;
-                next.anchorTick = g_state.anchorTick;
-                if (g_state.anchorTick == 0) {
+                next.anchorPositionMs = prev.anchorPositionMs;
+                next.anchorTick = prev.anchorTick;
+                if (prev.anchorTick == 0) {
                     next.anchorPositionMs = publishedPositionMs;
                     next.anchorTick = now;
                 }
@@ -1702,6 +1721,9 @@ void RefreshState() {
         }
     } catch (...) {
         gotSession = false;
+        // A manager that stopped answering (the media service restarted) is
+        // requested again on the next poll rather than kept for good.
+        sessionManager = nullptr;
     }
 
     if (!gotSession) {
@@ -4853,7 +4875,9 @@ LRESULT CALLBACK WidgetProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lPara
 void CALLBACK PollTimerProc(HWND hwnd, UINT, UINT_PTR, DWORD) {
     try {
         Settings s = GetSettings();
-        RefreshState();
+        // The player is read on StateThreadProc, not here: every call into the
+        // media service can wait for the player (seconds, while Yandex Music is
+        // busy), and this thread also moves the bars and answers the mouse.
         // Cheap when nothing changed: two registry values and a file timestamp.
         RefreshSurface(false);
         // A capture thread that has ended - the device was removed, or it was
@@ -4938,8 +4962,13 @@ void UpdateVisualTimer(HWND hwnd, Settings const& s, AnimationFrame const& frame
     }
     UINT interval = kVisualIdleIntervalMs;
     DWORD signalAge = GetTickCount() - g_lastSignalTick;
-    bool live = !s.visualizer || frame.moving || signalAge < kVisualFallMs;
-    if (live) {
+    bool live = s.visualizer && (frame.moving || signalAge < kVisualFallMs);
+    if (!s.visualizer) {
+        // No bars to animate: the timer only keeps the progress bar and the
+        // time moving, which a few frames a second do. It used to run at the
+        // visualizer's frame rate here, for nothing.
+        interval = 250;
+    } else if (live) {
         int fps = s.visualizerFps < 10 ? 10 : (s.visualizerFps > 120 ? 120 : s.visualizerFps);
         interval = (UINT)(1000 / fps);
         if (interval < (UINT)kVisualMinIntervalMs) {
@@ -5084,6 +5113,36 @@ DWORD WINAPI CommandThreadProc(LPVOID) {
     return 0;
 }
 
+// Reads the player (RefreshState) every poll interval. Everything that can wait
+// for the media service lives here, so the window thread never does.
+DWORD WINAPI StateThreadProc(LPVOID) {
+    try {
+        init_apartment(apartment_type::multi_threaded);
+    } catch (...) {
+    }
+
+    while (!g_stopThread.load()) {
+        try {
+            RefreshState();
+        } catch (...) {
+        }
+        int interval = GetSettings().pollIntervalMs;
+        if (interval < 100) {
+            interval = 100;
+        }
+        if (g_stateWakeEvent) {
+            WaitForSingleObject(g_stateWakeEvent, (DWORD)interval);
+        } else {
+            Sleep((DWORD)interval);
+        }
+    }
+
+    if (g_stateExitedEvent) {
+        SetEvent(g_stateExitedEvent);
+    }
+    return 0;
+}
+
 DWORD WINAPI PollThreadProc(LPVOID) {
     // This thread owns the media session objects and the widget window, so it
     // initializes its own apartment. The taskbar's thread is never blocked on
@@ -5186,6 +5245,18 @@ BOOL Wh_ModInit() {
         Wh_Log(L"CreateThread failed: %u", GetLastError());
     }
 
+    // The player is read on a thread of its own: a slow player must stall this
+    // thread, not the window that draws the bars and answers the mouse.
+    g_stateWakeEvent = CreateEventW(nullptr, FALSE, FALSE, nullptr);
+    g_stateExitedEvent = CreateEventW(nullptr, TRUE, FALSE, nullptr);
+    HANDLE stateThread =
+        CreateThread(nullptr, 0, StateThreadProc, nullptr, 0, nullptr);
+    if (stateThread) {
+        CloseHandle(stateThread);
+    } else {
+        Wh_Log(L"state CreateThread failed: %u", GetLastError());
+    }
+
     // Commands run on their own thread. Without it they would wait for the poll
     // timer, which is what made a click feel late.
     HANDLE commandThread =
@@ -5227,6 +5298,9 @@ void Wh_ModUninit() {
     if (g_pollWakeEvent) {
         SetEvent(g_pollWakeEvent);
     }
+    if (g_stateWakeEvent) {
+        SetEvent(g_stateWakeEvent);
+    }
 
     // Wait for the polling thread to finish. Returning from unload while it
     // still runs would let Explorer call into unloaded code, so this wait is
@@ -5247,6 +5321,21 @@ void Wh_ModUninit() {
         }
         CloseHandle(g_commandThreadExitedEvent);
         g_commandThreadExitedEvent = nullptr;
+    }
+
+    if (g_stateExitedEvent) {
+        // Bounded: a call into a stuck player can outlast the wait, and the
+        // timeout is logged rather than ignored.
+        DWORD wait = WaitForSingleObject(g_stateExitedEvent, 5000);
+        if (wait != WAIT_OBJECT_0) {
+            Wh_Log(L"State thread did not exit in time (wait=%u)", wait);
+        }
+        CloseHandle(g_stateExitedEvent);
+        g_stateExitedEvent = nullptr;
+    }
+    if (g_stateWakeEvent) {
+        CloseHandle(g_stateWakeEvent);
+        g_stateWakeEvent = nullptr;
     }
 
     if (g_pollWakeEvent) {
